@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.metrics import confusion_matrix
 from tensorflow.keras.utils import plot_model
 from tensorflow.keras.models import load_model
+from tensorflow.keras.callbacks import EarlyStopping
 
 class Model:
     def __init__(self, input_shape, categories_count):
@@ -16,9 +17,11 @@ class Model:
         raise Exception("define_model not implemented yet.")
 
     def train_model(self, train_dataset, validation_dataset, epochs):
+        # callback = EarlyStopping(monitor='val_loss', patience=3)
         history = self.model.fit(
             x=train_dataset,
             epochs=epochs,
+            # callbacks=[callback],
             verbose="auto",
             validation_data=validation_dataset
         )

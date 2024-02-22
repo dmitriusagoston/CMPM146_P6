@@ -13,14 +13,22 @@ class BasicModel(Model):
             layers.MaxPooling2D(),
             layers.Conv2D(8, 3, padding='same', activation='relu'),
             layers.MaxPooling2D(),
+            layers.Conv2D(16, 3, padding='same', activation='relu'),
+            layers.MaxPooling2D(),
+            layers.Conv2D(32, 3, padding='same', activation='relu'),
+            layers.MaxPooling2D(),
+            layers.Conv2D(64, 3, padding='same', activation='relu'),
+            layers.MaxPooling2D(),
+            layers.Dropout(0.55),
             layers.Flatten(),
             layers.Dense(32, activation='relu'),
+            layers.Dropout(0.55),
             layers.Dense(categories_count, activation='softmax')
         ])
     
     def _compile_model(self):
         self.model.compile(
-            optimizer=RMSprop(learning_rate=0.001),
+            optimizer=Adam(learning_rate=0.001),
             loss='categorical_crossentropy',
             metrics=['accuracy'],
         )

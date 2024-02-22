@@ -1,7 +1,7 @@
-categories = ['neutral', 'happy', 'surprise']
+categories = ['doom', 'animal_crossing']
 
-train_directory = 'train'
-test_directory = 'test'
+train_directory = 'train_d_or_ac'
+test_directory = 'test_d_or_ac'
 
 train_size = 5000
 original_image_size = (48, 48)
